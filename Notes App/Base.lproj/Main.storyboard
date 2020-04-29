@@ -44,12 +44,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Notes" largeTitleDisplayMode="always" id="cfU-Pd-VUl">
                         <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" style="plain" id="W4d-xP-4gk">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lz8-V5-rfC">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lz8-V5-rfC">
+                                <rect key="frame" x="302" y="7" width="182" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="square.and.pencil" catalog="system"/>
                                 <connections>
-                                    <segue destination="lSj-we-gfS" kind="show" id="Wvh-ox-IpO"/>
+                                    <action selector="composeClicked:" destination="kD9-WI-e7t" eventType="touchUpInside" id="dKd-TQ-a3z"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -122,9 +122,6 @@
             <point key="canvasLocation" x="1212" y="135"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="jvS-ca-Sc5"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="square.and.pencil" catalog="system" width="32" height="32"/>
     </resources>

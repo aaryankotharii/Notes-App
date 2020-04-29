@@ -29,21 +29,30 @@ class ViewController: UIViewController {
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-
-    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//
+//        if entry != nil{
+//                self.updateEntry()
+//            } else {
+//                if textView.text != nil{
+//                    self.createNewEntry()
+//                    print("New entry made")
+//                }
+//            }
+//    }
+        
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    if entry != nil{
-            self.updateEntry()
-        } else {
-            if textView.text != nil{
-                self.createNewEntry()
-                print("New entry made")
+    override func viewWillDisappear(_ animated: Bool) {
+                super.viewWillDisappear(animated)
+        if entry != nil{
+                self.updateEntry()
+            } else {
+                if textView.text != nil{
+                    self.createNewEntry()
+                    print("New entry made")
+                }
             }
-        }
     }
     
     func updateEntry(){
