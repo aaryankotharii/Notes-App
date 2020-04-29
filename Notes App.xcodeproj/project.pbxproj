@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -58,7 +58,6 @@
 				AF4AA96D2277C061D5D5181A /* Pods-Notes App.debug.xcconfig */,
 				357F03AD76B39C9ED7452576 /* Pods-Notes App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,6 +82,9 @@
 		5BEA28C52459C75900A7E385 /* Notes App */ = {
 			isa = PBXGroup;
 			children = (
+				5BEA28DF2459CBE100A7E385 /* Controller */,
+				5BEA28DE2459CBCC00A7E385 /* View */,
+				5BEA28DD2459CBC700A7E385 /* Model */,
 				5BEA28C62459C75900A7E385 /* AppDelegate.swift */,
 				5BEA28C82459C75900A7E385 /* SceneDelegate.swift */,
 				5BEA28CA2459C75900A7E385 /* ViewController.swift */,
@@ -93,6 +95,27 @@
 				5BEA28CF2459C75900A7E385 /* Notes_App.xcdatamodeld */,
 			);
 			path = "Notes App";
+			sourceTree = "<group>";
+		};
+		5BEA28DD2459CBC700A7E385 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5BEA28DE2459CBCC00A7E385 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5BEA28DF2459CBE100A7E385 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
