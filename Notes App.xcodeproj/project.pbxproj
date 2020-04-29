@@ -16,6 +16,7 @@
 		5BEA28D32459C76200A7E385 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BEA28D22459C76200A7E385 /* Assets.xcassets */; };
 		5BEA28D62459C76200A7E385 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BEA28D42459C76200A7E385 /* LaunchScreen.storyboard */; };
 		5BEA28E12459CD7400A7E385 /* NotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA28E02459CD7400A7E385 /* NotesVC.swift */; };
+		5BEA28E32459CE9C00A7E385 /* composeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA28E22459CE9C00A7E385 /* composeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		5BEA28D52459C76200A7E385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BEA28D72459C76200A7E385 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BEA28E02459CD7400A7E385 /* NotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesVC.swift; sourceTree = "<group>"; };
+		5BEA28E22459CE9C00A7E385 /* composeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = composeVC.swift; sourceTree = "<group>"; };
 		947FAF5E452CB87274D554B0 /* Pods_Notes_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notes_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4AA96D2277C061D5D5181A /* Pods-Notes App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes App.debug.xcconfig"; path = "Target Support Files/Pods-Notes App/Pods-Notes App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				5BEA28E02459CD7400A7E385 /* NotesVC.swift */,
+				5BEA28E22459CE9C00A7E385 /* composeVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BEA28CB2459C75900A7E385 /* ViewController.swift in Sources */,
+				5BEA28E32459CE9C00A7E385 /* composeVC.swift in Sources */,
 				5BEA28E12459CD7400A7E385 /* NotesVC.swift in Sources */,
 				5BEA28C72459C75900A7E385 /* AppDelegate.swift in Sources */,
 				5BEA28C92459C75900A7E385 /* SceneDelegate.swift in Sources */,

@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="-529" y="125"/>
         </scene>
-        <!--View Controller-->
+        <!--ComposeVC-->
         <scene sceneID="SBP-eT-eID">
             <objects>
-                <viewController id="XEz-05-iP6" sceneMemberID="viewController">
+                <viewController id="XEz-05-iP6" customClass="composeVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m7l-Eu-qPR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,6 +98,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="loe-Jz-5wz" id="bBo-rh-pPz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lc6-NQ-ihq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
