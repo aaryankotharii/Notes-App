@@ -31,11 +31,17 @@ class ViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if entry != nil{
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    if entry != nil{
             self.updateEntry()
         } else {
             if textView.text != nil{
                 self.createNewEntry()
+                print("New entry made")
             }
         }
     }

@@ -17,6 +17,8 @@ class NotesVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Notes Loaded")
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         moc = appDelegate.persistentContainer.viewContext
 
@@ -25,11 +27,21 @@ class NotesVC: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.fetchEntries()
+        print(entries.count,"Numebr of entries")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.fetchEntries()
+        print(entries.count,"Numebr of entries")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.fetchEntries()
+        print(entries.count,"Numebr of entries")
     }
     
     
@@ -39,7 +51,7 @@ class NotesVC: UITableViewController {
         do {
             let entryObjects = try moc.fetch(fetchRequest)
             
-            self.entries = entryObjects as! [NSManagedObject]
+            self.entries = entryObjects as? [NSManagedObject]
             
             
             
@@ -64,11 +76,40 @@ class NotesVC: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "notescell", for: indexPath) as! NotesTableViewCell
+        
+        let entry = entries[indexPath.row]
+        
+        cell.titleLabel.text = entry.value(forKey: "bodyText") as? String
+        let entryDate = entry.value(forKey: "createdAt") as? Date
+        
+        
+        
 
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        
+        let entry = self.entries[indexPath.row]
+        
+        self.performSegue(withIdentifier: "tonote", sender: entry)
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tonote"{
+            let vc = segue.destination as! ViewController
+            
+            vc.entry = sender as? NSManagedObject
+            
+            
+            
+        }
     }
     
 
