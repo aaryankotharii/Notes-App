@@ -48,7 +48,17 @@ class ViewController: UIViewController {
     
     func updateEntry(){
         
+        entry.setValue(self.textView.text, forKey: "bodyText")
+        
+        entry.setValue(Date(), forKey: "createdAt")
+        
+        do{
+            try moc.save()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
+    
     
     func createNewEntry(){
         let entryEntity = NSEntityDescription.entity(forEntityName: "Note", in:  moc)!

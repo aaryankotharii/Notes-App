@@ -81,11 +81,10 @@ class NotesVC: UITableViewController {
         let entry = entries[indexPath.row]
         
         cell.titleLabel.text = entry.value(forKey: "bodyText") as? String
+        
         let entryDate = entry.value(forKey: "createdAt") as? Date
         
         
-        
-
         // Configure the cell...
 
         return cell
