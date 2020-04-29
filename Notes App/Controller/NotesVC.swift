@@ -7,17 +7,42 @@
 //
 
 import UIKit
+import CoreData
 
 class NotesVC: UITableViewController {
+    
+    var entries : [NSManagedObject]!
+    var moc : NSManagedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        moc = appDelegate.persistentContainer.viewContext
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    
+    
+    func fetchEntries(){
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+        do {
+            let entryObjects = try moc.fetch(fetchRequest)
+            
+            self.entries = entryObjects as! [NSManagedObject]
+            
+            
+            
+        } catch let error as NSError{
+            print("Fetch failed : \(error.localizedDescription)")
+        }
+        
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
