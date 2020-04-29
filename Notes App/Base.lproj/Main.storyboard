@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lSj-we-gfS">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -16,13 +16,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kDp-2c-76a">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="kDp-2c-76a" customClass="NotesTableViewCell" customModule="Notes_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kDp-2c-76a" id="8ZK-ZT-f5N">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aF3-SL-bgH">
+                                            <rect key="frame" x="0.0" y="17" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="aF3-SL-bgH" id="ScR-LK-ZBT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -40,12 +52,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="XEz-05-iP6" kind="show" identifier="tonote" id="77F-Mm-Q7u"/>
+                        <segue destination="lSj-we-gfS" kind="show" id="jvS-ca-Sc5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ery-vb-HAX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="438" y="125"/>
+            <point key="canvasLocation" x="437.68115942028987" y="124.55357142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="61I-7b-kNi">
@@ -63,15 +75,15 @@
             </objects>
             <point key="canvasLocation" x="-529" y="125"/>
         </scene>
-        <!--ComposeVC-->
-        <scene sceneID="SBP-eT-eID">
+        <!--View Controller-->
+        <scene sceneID="hP0-w1-oD4">
             <objects>
-                <viewController id="XEz-05-iP6" customClass="composeVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="m7l-Eu-qPR">
+                <viewController id="lSj-we-gfS" customClass="ViewController" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bCK-fq-IYV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="loe-Jz-5wz">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pH2-UV-guH">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -82,33 +94,24 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="loe-Jz-5wz" firstAttribute="top" secondItem="beQ-VR-oXH" secondAttribute="top" id="UVE-Yw-qZE"/>
-                            <constraint firstItem="beQ-VR-oXH" firstAttribute="trailing" secondItem="loe-Jz-5wz" secondAttribute="trailing" id="q9v-NF-Cnf"/>
-                            <constraint firstItem="loe-Jz-5wz" firstAttribute="leading" secondItem="beQ-VR-oXH" secondAttribute="leading" id="rei-Pu-h8h"/>
-                            <constraint firstItem="beQ-VR-oXH" firstAttribute="bottom" secondItem="loe-Jz-5wz" secondAttribute="bottom" id="xNP-Wi-rhA"/>
+                            <constraint firstItem="pH2-UV-guH" firstAttribute="top" secondItem="xV3-O4-bzO" secondAttribute="top" id="CZT-2e-888"/>
+                            <constraint firstItem="pH2-UV-guH" firstAttribute="trailing" secondItem="xV3-O4-bzO" secondAttribute="trailing" id="sry-Df-cd6"/>
+                            <constraint firstItem="pH2-UV-guH" firstAttribute="leading" secondItem="xV3-O4-bzO" secondAttribute="leading" id="t8e-ax-QKr"/>
+                            <constraint firstItem="pH2-UV-guH" firstAttribute="bottom" secondItem="xV3-O4-bzO" secondAttribute="bottom" id="yul-Qm-dlv"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="beQ-VR-oXH"/>
+                        <viewLayoutGuide key="safeArea" id="xV3-O4-bzO"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="S8c-q1-7Bn">
-                        <barButtonItem key="rightBarButtonItem" image="square.and.arrow.up" catalog="system" style="plain" id="ov7-vx-aZE">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="blj-9f-YRx">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="hTj-g7-2si"/>
                     <connections>
-                        <outlet property="textView" destination="loe-Jz-5wz" id="bBo-rh-pPz"/>
+                        <outlet property="textView" destination="pH2-UV-guH" id="H3k-GA-RdB"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lc6-NQ-ihq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xrz-Tr-Cyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1241" y="125"/>
+            <point key="canvasLocation" x="1212" y="135"/>
         </scene>
     </scenes>
     <resources>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
+        <image name="square.and.pencil" catalog="system" width="32" height="32"/>
     </resources>
 </document>
