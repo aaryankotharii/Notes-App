@@ -10,7 +10,7 @@
         <!--Notes-->
         <scene sceneID="Eea-y6-5lc">
             <objects>
-                <tableViewController id="kD9-WI-e7t" sceneMemberID="viewController">
+                <tableViewController id="kD9-WI-e7t" customClass="NotesVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SSK-Ep-ask">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
