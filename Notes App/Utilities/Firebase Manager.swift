@@ -34,7 +34,7 @@ class firebaseNetworking {
     
     //MARK: - Function to update company name
     public func updateNote(bodyText: String, id:String, completion: @escaping (Bool) -> ()) {
-        let ref = database.child("users").child(getUID()).child(id)
+        let ref = database.child("users").child(myUID).child(id)
         ref.updateChildValues(["bodyText" : bodyText])
         {
             (error:Error?, database:DatabaseReference) in

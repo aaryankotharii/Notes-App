@@ -96,5 +96,16 @@ class ViewController: UIViewController {
                 }
             }
         }
+    
+}
+
+extension ViewController : UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        database.updateNote(bodyText: textView.text, id: id) { (success) in
+            if success {
+                print("NOTES UPDATED")
+            }
+        }
+    }
 }
 
