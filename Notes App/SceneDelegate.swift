@@ -22,19 +22,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let VC = mainStoryboard.instantiateViewController(withIdentifier: "FetchVC") as! FetchVC
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window!.windowScene = windowScene
-        window!.rootViewController = VC
-        window!.makeKeyAndVisible()
+        //let VC = mainStoryboard.instantiateViewController(withIdentifier: "FetchVC") as! FetchVC
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//        window!.windowScene = windowScene
+//        window!.rootViewController = VC
+//        window!.makeKeyAndVisible()
         
         
         let loginstatus = UserDefaults.standard.bool(forKey: "login")
         
         debugLog(message: "Login status=\(loginstatus)")
         
-        /*   if loginstatus == false {
+           if loginstatus == false {
          let firebaseAuth = Auth.auth()
          do {
          try firebaseAuth.signOut()
@@ -57,7 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
          window!.windowScene = windowScene
          window!.rootViewController = VC
          window!.makeKeyAndVisible()
-         }*/
+         }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
