@@ -8,4 +8,5 @@ target 'Notes App' do
   # Pods for Notes App
 	pod 'Firebase/Auth'
   	pod 'Firebase/Database'
+	pod 'GoogleSignIn'
 end
