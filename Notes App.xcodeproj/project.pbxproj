@@ -86,6 +86,7 @@
 			children = (
 				5BD12511245BDA9E005535CB /* Constants.swift */,
 				5BD12513245BDEDB005535CB /* Firebase Manager.swift */,
+				5BEA28CA2459C75900A7E385 /* ViewController.swift */,
 				5BD12517245C7571005535CB /* Extensions.swift */,
 			);
 			path = Utilities;
@@ -118,7 +119,6 @@
 				5BEA28DD2459CBC700A7E385 /* Model */,
 				5BEA28C62459C75900A7E385 /* AppDelegate.swift */,
 				5BEA28C82459C75900A7E385 /* SceneDelegate.swift */,
-				5BEA28CA2459C75900A7E385 /* ViewController.swift */,
 				5BEA28CC2459C75900A7E385 /* Main.storyboard */,
 				5BEA28D22459C76200A7E385 /* Assets.xcassets */,
 				5BEA28D42459C76200A7E385 /* LaunchScreen.storyboard */,
