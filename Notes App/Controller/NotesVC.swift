@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import GoogleSignIn
 
 class NotesVC: UITableViewController {
     
@@ -48,34 +49,29 @@ class NotesVC: UITableViewController {
         } catch let error as NSError{
             print("Fetch failed : \(error.localizedDescription)")
         }
-        updateDFirebase()
         self.tableView.reloadData()
     }
-    
-    func updateDFirebase(){
-        for entry in entries {
-        let bodyText = entry.value(forKey: "bodyText") as? String
-        let entryDate = entry.value(forKey: "createdAt") as? Date
-        let id = entry.value(forKey: "id") as? String
-            
-            let formatter = DateFormatter()
-            // initially set the format based on your datepicker date / server String
-            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-            let myString = formatter.string(from: entryDate!)
-            
-            let param = ["bodyText":bodyText,"createdAt":myString] as [String : Any]
-            database.AddNote(param: param, id: id!) { (success) in
-                if success{
-                    print("SUCCESSSS")
-                }
-            }
-        }
-    }
-    
+        
     
     @IBAction func composeClicked(_ sender: Any) {
         performSegue(withIdentifier: "tonote", sender: nil)
+    }
+    
+    
+    @IBAction func signOutClikced(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signOut()
+        UserDefaults.setValue(false, forKey: "login")
+        for entry in entries {
+            self.moc.delete(entry)
+        }
+            do{
+                try moc.save()
+            }catch{
+                print(error.localizedDescription)
+            }
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let VC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        self.present(VC, animated: true, completion: nil)
     }
     
     

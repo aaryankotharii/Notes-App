@@ -43,8 +43,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Notes" largeTitleDisplayMode="always" id="cfU-Pd-VUl">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="tuP-x9-CgG">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ar4-kD-Vfu">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <connections>
+                                <action selector="signOutClikced:" destination="kD9-WI-e7t" id="CdV-Yv-UGH"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" style="plain" id="W4d-xP-4gk">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lz8-V5-rfC">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lz8-V5-rfC">
                                 <rect key="frame" x="212" y="0.0" width="182" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="square.and.pencil" catalog="system"/>
