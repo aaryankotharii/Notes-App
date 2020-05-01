@@ -13,7 +13,7 @@ import GoogleSignIn
 
 class NotesVC: UITableViewController {
     
-    var entries : [NSManagedObject]!
+    var entries = [NSManagedObject]()
     var moc : NSManagedObjectContext!
     
     let database = firebaseNetworking.shared
@@ -26,14 +26,15 @@ class NotesVC: UITableViewController {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         moc = appDelegate.persistentContainer.viewContext
-         self.navigationItem.leftBarButtonItem = self.editButtonItem
+         //self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.fetchEntries()
-        print(entries.count,"Numebr of entries")
+        self.tableView.reloadData()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.fetchEntries()
+       // self.fetchEntries()
         print(entries.count,"Numebr of entries")
     }
     
@@ -44,7 +45,7 @@ class NotesVC: UITableViewController {
         do {
             let entryObjects = try moc.fetch(fetchRequest)
             
-            self.entries = entryObjects as? [NSManagedObject]
+            self.entries = (entryObjects as? [NSManagedObject])!
             
         } catch let error as NSError{
             print("Fetch failed : \(error.localizedDescription)")
@@ -60,7 +61,7 @@ class NotesVC: UITableViewController {
     
     @IBAction func signOutClikced(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signOut()
-        UserDefaults.setValue(false, forKey: "login")
+        UserDefaults.standard.setValue(false, forKey: "login")
         for entry in entries {
             self.moc.delete(entry)
         }
@@ -152,34 +153,7 @@ class NotesVC: UITableViewController {
             }catch{
                 print(error.localizedDescription)
             }
-           // tableView.reloadData()
         }
     }
     
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

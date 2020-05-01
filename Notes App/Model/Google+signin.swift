@@ -38,7 +38,7 @@ extension UIViewController : GIDSignInDelegate{
             UserDefaults.standard.setValue(true, forKey: "login")
            //Access the storyboard and fetch an instance of the view controller
             let storyboard = UIStoryboard(name: "Main", bundle: nil);
-            let vc = storyboard.instantiateViewController(withIdentifier: "nav") as! UINavigationController
+            let vc = storyboard.instantiateViewController(withIdentifier: "FetchVC") as! FetchVC
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated:true, completion: nil)
         }

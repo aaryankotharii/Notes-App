@@ -10,7 +10,7 @@
         <!--Notes-->
         <scene sceneID="Eea-y6-5lc">
             <objects>
-                <tableViewController id="kD9-WI-e7t" customClass="NotesVC" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NotesVC" modalPresentationStyle="fullScreen" id="kD9-WI-e7t" customClass="NotesVC" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SSK-Ep-ask">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,10 +48,10 @@
                                 <rect key="frame" x="20" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="signOutClikced:" destination="kD9-WI-e7t" eventType="touchUpInside" id="NUR-qF-96e"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="signOutClikced:" destination="kD9-WI-e7t" id="CdV-Yv-UGH"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" style="plain" id="W4d-xP-4gk">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lz8-V5-rfC">
@@ -75,7 +75,8 @@
         <!--Navigation Controller-->
         <scene sceneID="61I-7b-kNi">
             <objects>
-                <navigationController storyboardIdentifier="nav" id="55o-wz-bfl" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="nav" modalPresentationStyle="fullScreen" id="55o-wz-bfl" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hKI-hW-G6L"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="DvQ-XI-Ig5">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -91,7 +92,7 @@
         <!--View Controller-->
         <scene sceneID="hP0-w1-oD4">
             <objects>
-                <viewController id="lSj-we-gfS" customClass="ViewController" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="lSj-we-gfS" customClass="ViewController" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bCK-fq-IYV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +138,7 @@
         <!--LoginVC-->
         <scene sceneID="tYG-Ix-kdF">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="HJn-wi-R1W" customClass="LoginVC" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" modalPresentationStyle="fullScreen" id="HJn-wi-R1W" customClass="LoginVC" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fu8-xf-DDD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,17 +163,26 @@
         <!--FetchVC-->
         <scene sceneID="XgF-e0-q7v">
             <objects>
-                <viewController id="h7u-ic-RBV" customClass="FetchVC" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FetchVC" modalPresentationStyle="fullScreen" id="h7u-ic-RBV" customClass="FetchVC" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BrT-B7-8FU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FETCHING " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb8-cb-mlp">
+                                <rect key="frame" x="186" y="407" width="87" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="s9A-NB-bFG"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tg1-io-s8G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1910" y="128"/>
+            <point key="canvasLocation" x="-1761" y="135"/>
         </scene>
     </scenes>
     <resources>
