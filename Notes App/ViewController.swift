@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class ViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
     var entry : NSManagedObject!
     
     override func viewDidLoad() {
+        print(Auth.auth().currentUser?.uid)
         super.viewDidLoad()
         // Do any additional setup after loading the view.
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }

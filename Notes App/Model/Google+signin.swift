@@ -38,12 +38,10 @@ extension UIViewController : GIDSignInDelegate{
             
            //Access the storyboard and fetch an instance of the view controller
             let storyboard = UIStoryboard(name: "Main", bundle: nil);
-            //let vc = storyboard.instantiateViewController(withIdentifier: "chooseVC") as! chooseViewController
-//            vc.firstName = user.profile.givenName
-//            vc.lastName = user.profile.familyName
-//            let navController = UINavigationController(rootViewController: vc)
-//            navController.modalPresentationStyle = .fullScreen
-//            self.present(navController, animated:true, completion: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "nav") as! UINavigationController
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated:true, completion: nil)
         }
     }
 }
+

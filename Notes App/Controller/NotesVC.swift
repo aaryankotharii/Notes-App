@@ -22,7 +22,7 @@ class NotesVC: UITableViewController {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         moc = appDelegate.persistentContainer.viewContext
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
+         self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.fetchEntries()
         print(entries.count,"Numebr of entries")
     }

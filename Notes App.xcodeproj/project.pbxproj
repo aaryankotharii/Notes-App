@@ -13,6 +13,7 @@
 		5BD12509245BD4E2005535CB /* Google+signin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD12508245BD4E2005535CB /* Google+signin.swift */; };
 		5BD1250D245BD79E005535CB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5BD1250C245BD79E005535CB /* .gitignore */; };
 		5BD1250F245BD8C1005535CB /* FetchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD1250E245BD8C1005535CB /* FetchVC.swift */; };
+		5BD12512245BDA9E005535CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD12511245BDA9E005535CB /* Constants.swift */; };
 		5BEA28C72459C75900A7E385 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA28C62459C75900A7E385 /* AppDelegate.swift */; };
 		5BEA28C92459C75900A7E385 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA28C82459C75900A7E385 /* SceneDelegate.swift */; };
 		5BEA28CB2459C75900A7E385 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA28CA2459C75900A7E385 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 		5BD12508245BD4E2005535CB /* Google+signin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Google+signin.swift"; sourceTree = "<group>"; };
 		5BD1250C245BD79E005535CB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		5BD1250E245BD8C1005535CB /* FetchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVC.swift; sourceTree = "<group>"; };
+		5BD12511245BDA9E005535CB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5BEA28C32459C75900A7E385 /* Notes App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notes App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BEA28C62459C75900A7E385 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BEA28C82459C75900A7E385 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5BD12510245BDA8C005535CB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5BD12511245BDA9E005535CB /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		5BEA28BA2459C75900A7E385 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +106,7 @@
 		5BEA28C52459C75900A7E385 /* Notes App */ = {
 			isa = PBXGroup;
 			children = (
+				5BD12510245BDA8C005535CB /* Utilities */,
 				5BEA28DF2459CBE100A7E385 /* Controller */,
 				5BEA28DE2459CBCC00A7E385 /* View */,
 				5BEA28DD2459CBC700A7E385 /* Model */,
@@ -279,6 +290,7 @@
 				5BEA28E12459CD7400A7E385 /* NotesVC.swift in Sources */,
 				5BD12507245BD2E3005535CB /* LoginVC.swift in Sources */,
 				5BEA28C72459C75900A7E385 /* AppDelegate.swift in Sources */,
+				5BD12512245BDA9E005535CB /* Constants.swift in Sources */,
 				5BEA28C92459C75900A7E385 /* SceneDelegate.swift in Sources */,
 				5BEA28D12459C75900A7E385 /* Notes_App.xcdatamodeld in Sources */,
 				5BD12509245BD4E2005535CB /* Google+signin.swift in Sources */,
