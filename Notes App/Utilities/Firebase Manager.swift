@@ -48,5 +48,10 @@ class firebaseNetworking {
             }
         }
     }
+    
+    public func deleteNote(_ id : String){
+        let ref = database.child("users").child(myUID).child(id)
+        ref.removeValue()
+    }
 
 }

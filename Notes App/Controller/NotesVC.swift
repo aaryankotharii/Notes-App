@@ -148,16 +148,19 @@ class NotesVC: UITableViewController {
 
             
             let entry = entries[indexPath.row]
+            let id = entry.value(forKey: "id") as? String
             self.moc.delete(entry)
             self.entries.remove(at: indexPath.row)
             
-                        tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             
             do{
                 try moc.save()
             }catch{
                 print(error.localizedDescription)
             }
+                        
+            database.deleteNote(id!)
         }
     }
     
