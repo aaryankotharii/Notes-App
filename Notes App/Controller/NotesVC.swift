@@ -39,6 +39,7 @@ class NotesVC: UITableViewController {
         super.viewDidAppear(animated)
         self.fetchEntries()
         print(entries.count,"Numebr of entries")
+        database.database.removeAllObservers()
     }
     
     
