@@ -10,7 +10,7 @@
         <!--Notes-->
         <scene sceneID="Eea-y6-5lc">
             <objects>
-                <tableViewController storyboardIdentifier="NotesVC" modalPresentationStyle="fullScreen" id="kD9-WI-e7t" customClass="NotesVC" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NotesVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="kD9-WI-e7t" customClass="NotesVC" customModule="Notes_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SSK-Ep-ask">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,7 @@
         <!--Navigation Controller-->
         <scene sceneID="61I-7b-kNi">
             <objects>
-                <navigationController storyboardIdentifier="nav" modalPresentationStyle="fullScreen" id="55o-wz-bfl" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="nav" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="55o-wz-bfl" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="hKI-hW-G6L"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="DvQ-XI-Ig5">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -155,14 +155,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSC-e8-t3t">
-                                <rect key="frame" x="184" y="384" width="46" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="googleSignIn:" destination="HJn-wi-R1W" eventType="touchUpInside" id="1KG-Cn-HJz"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="iNote" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S17-Ro-0TD">
                                 <rect key="frame" x="96" y="182" width="223" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -170,14 +162,38 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSC-e8-t3t">
+                                <rect key="frame" x="97" y="423" width="220" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="F7Q-NM-Og4"/>
+                                    <constraint firstAttribute="width" constant="220" id="naR-1B-OZj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="   Sign In with Google" image="google.png">
+                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="googleSignIn:" destination="HJn-wi-R1W" eventType="touchUpInside" id="1KG-Cn-HJz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.77254901960784317" green="0.87058823529411766" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zSC-e8-t3t" firstAttribute="centerY" secondItem="Fu8-xf-DDD" secondAttribute="centerY" id="QE9-NV-C5x"/>
+                            <constraint firstItem="zSC-e8-t3t" firstAttribute="centerX" secondItem="Fu8-xf-DDD" secondAttribute="centerX" id="xo9-pt-eaV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oFJ-bb-wWZ"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GV-mM-bkC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2652" y="135"/>
+            <point key="canvasLocation" x="-2652.1739130434785" y="134.59821428571428"/>
         </scene>
         <!--FetchVC-->
         <scene sceneID="XgF-e0-q7v">
@@ -187,15 +203,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FETCHING " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb8-cb-mlp">
-                                <rect key="frame" x="164" y="438" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetching Your Data ...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb8-cb-mlp">
+                                <rect key="frame" x="104" y="134" width="206" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.14901960780000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.77254901960784317" green="0.87058823529411766" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="s9A-NB-bFG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qb8-cb-mlp" secondAttribute="trailing" constant="50" id="BKd-id-Unt"/>
+                            <constraint firstItem="qb8-cb-mlp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s9A-NB-bFG" secondAttribute="leading" constant="50" id="cTJ-V7-Pan"/>
+                            <constraint firstItem="qb8-cb-mlp" firstAttribute="top" secondItem="s9A-NB-bFG" secondAttribute="top" constant="90" id="dSq-sb-Z42"/>
+                            <constraint firstItem="qb8-cb-mlp" firstAttribute="centerX" secondItem="BrT-B7-8FU" secondAttribute="centerX" id="zg7-Ew-kxE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="s9A-NB-bFG"/>
                     </view>
                 </viewController>
@@ -205,6 +226,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="google.png" width="18" height="18"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
     </resources>
 </document>
