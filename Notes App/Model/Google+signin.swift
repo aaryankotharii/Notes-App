@@ -35,7 +35,7 @@ extension UIViewController : GIDSignInDelegate{
             }
             guard let uid = user.userID else { return }
             print("Sucessfully logged into firebase with Google!",uid)
-            
+            UserDefaults.standard.setValue(true, forKey: "login")
            //Access the storyboard and fetch an instance of the view controller
             let storyboard = UIStoryboard(name: "Main", bundle: nil);
             let vc = storyboard.instantiateViewController(withIdentifier: "nav") as! UINavigationController

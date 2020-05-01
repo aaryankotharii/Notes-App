@@ -16,33 +16,26 @@ class ViewController: UIViewController {
     
     var moc : NSManagedObjectContext!
     var entry : NSManagedObject!
+    var id : String!
+    
+    let database = firebaseNetworking.shared
+
     
     override func viewDidLoad() {
-        print(Auth.auth().currentUser?.uid)
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            moc = appDelegate.persistentContainer.viewContext
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        moc = appDelegate.persistentContainer.viewContext
         
         if entry != nil{
             self.textView.text = entry.value(forKey: "bodyText") as? String
+            id = entry.value(forKey: "id") as? String
         } else {
             self.textView.text = ""
         }
     }
-    
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//
-//        if entry != nil{
-//                self.updateEntry()
-//            } else {
-//                if textView.text != nil{
-//                    self.createNewEntry()
-//                    print("New entry made")
-//                }
-//            }
-//    }
+
+
         
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,20 +52,27 @@ class ViewController: UIViewController {
     
     func updateEntry(){
         
+        //MARK:
         entry.setValue(self.textView.text, forKey: "bodyText")
-        
         entry.setValue(Date(), forKey: "createdAt")
         
-        do{
-            try moc.save()
-        } catch {
-            print(error.localizedDescription)
+        do{  try moc.save() }
+        catch { print(error.localizedDescription)  }
+        
+        //MARK:
+        database.updateNote(bodyText: textView.text, id: id) { (success) in
+            if success {
+                print("NOTES UPDATED")
+            }
         }
     }
     
-    
+  
+    //MARK:- New Entry
     func createNewEntry(){
         let entryEntity = NSEntityDescription.entity(forEntityName: "Note", in:  moc)!
+        
+        let id = NSUUID().uuidString
         
         let entryObject = NSManagedObject(entity: entryEntity, insertInto: moc)
         
@@ -80,13 +80,21 @@ class ViewController: UIViewController {
         
         entryObject.setValue(Date(), forKey: "createdAt")
         
-        do{
-            try moc.save()
-        } catch let error as NSError{
-            print(error.localizedDescription, "Could not save")
+        entryObject.setValue(id, forKey: "id")
+        
+        //MARK: Save Note in CoreDataBase
+        do{  try moc.save() }
+        catch let error as NSError{ print(error.localizedDescription) }
+
+        
+        //MARK: Save Note in Firebase Database
+        let param = ["bodyText":textView.text!,"createdAt":Date().stringValue] as [String : String]
+        
+        database.AddNote(param: param, id: id) { (success) in
+                if success{
+                    print("SUCCESSSS added to database")
+                }
+            }
         }
-    }
-
-
 }
 
