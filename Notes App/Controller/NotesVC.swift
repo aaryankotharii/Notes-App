@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class NotesVC: UITableViewController {
     
@@ -21,22 +22,10 @@ class NotesVC: UITableViewController {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         moc = appDelegate.persistentContainer.viewContext
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.fetchEntries()
         print(entries.count,"Numebr of entries")
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.fetchEntries()
-//        print(entries.count,"Numebr of entries")
-//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
