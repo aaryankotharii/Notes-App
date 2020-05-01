@@ -8,6 +8,8 @@
 
 import Foundation
 import Firebase
+import CoreData
+
 
 //MARK: -  function to get uid
 internal func getUID() -> String {
@@ -21,4 +23,22 @@ public func debugLog(message: String) {
     debugPrint(message)
     debugPrint("=======================================")
     #endif
+}
+
+public func deleteAllData(entity: String){
+
+guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+let managedContext = appDelegate.persistentContainer.viewContext
+let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+fetchRequest.returnsObjectsAsFaults = false
+
+do {
+    let arrUsrObj = try managedContext.fetch(fetchRequest)
+    for usrObj in arrUsrObj as! [NSManagedObject] {
+        managedContext.delete(usrObj)
+    }
+   try managedContext.save() //don't forget
+    } catch let error as NSError {
+    print("delete fail--",error)
+  }
 }

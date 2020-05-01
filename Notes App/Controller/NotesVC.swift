@@ -18,7 +18,11 @@ class NotesVC: UITableViewController {
     
     let database = firebaseNetworking.shared
 
-
+    @IBAction func deleteAll(_ sender: Any) {
+        deleteAllData(entity: "Note")
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,12 +33,11 @@ class NotesVC: UITableViewController {
          //self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.fetchEntries()
         self.tableView.reloadData()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       // self.fetchEntries()
+        self.fetchEntries()
         print(entries.count,"Numebr of entries")
     }
     
@@ -62,17 +65,19 @@ class NotesVC: UITableViewController {
     @IBAction func signOutClikced(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signOut()
         UserDefaults.standard.setValue(false, forKey: "login")
+        deleteAllData(entity: "Note")
         for entry in entries {
             self.moc.delete(entry)
         }
             do{
                 try moc.save()
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let VC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                self.present(VC, animated: true, completion: nil)
+
             }catch{
                 print(error.localizedDescription)
             }
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let VC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-        self.present(VC, animated: true, completion: nil)
     }
     
     
@@ -97,7 +102,7 @@ class NotesVC: UITableViewController {
         
         cell.titleLabel.text = entry.value(forKey: "bodyText") as? String
         
-        let entryDate = entry.value(forKey: "createdAt") as? Date
+        //let entryDate = entry.value(forKey: "createdAt") as? Date
         
         
         // Configure the cell...

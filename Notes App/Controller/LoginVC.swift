@@ -16,34 +16,18 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        deleteAllData(entity: "Note")
+        
         GIDSignIn.sharedInstance()?.presentingViewController = self
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
-        deleteAllData(entity: "Note")
     }
     
     @IBAction func googleSignIn(_ sender: Any) {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signIn()
     }
-
-    func deleteAllData(entity: String){
-
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    let managedContext = appDelegate.persistentContainer.viewContext
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-    fetchRequest.returnsObjectsAsFaults = false
-
-    do {
-        let arrUsrObj = try managedContext.fetch(fetchRequest)
-        for usrObj in arrUsrObj as! [NSManagedObject] {
-            managedContext.delete(usrObj)
-        }
-       try managedContext.save() //don't forget
-        } catch let error as NSError {
-        print("delete fail--",error)
-      }
-
-    }
 }
+
+

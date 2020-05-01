@@ -70,18 +70,18 @@ class ViewController: UIViewController {
   
     //MARK:- New Entry
     func createNewEntry(){
-        let entryEntity = NSEntityDescription.entity(forEntityName: "Note", in:  moc)!
-        
-        let id = NSUUID().uuidString
-        
+       let entryEntity = NSEntityDescription.entity(forEntityName: "Note", in:  moc)!
+
+       let id = NSUUID().uuidString
+
         let entryObject = NSManagedObject(entity: entryEntity, insertInto: moc)
-        
+
         entryObject.setValue(self.textView.text, forKey: "bodyText")
-        
+
         entryObject.setValue(Date(), forKey: "createdAt")
-        
+
         entryObject.setValue(id, forKey: "id")
-        
+
         //MARK: Save Note in CoreDataBase
         do{  try moc.save() }
         catch let error as NSError{ print(error.localizedDescription) }
@@ -99,13 +99,15 @@ class ViewController: UIViewController {
     
 }
 
-//extension ViewController : UITextViewDelegate {
-//    func textViewDidChange(_ textView: UITextView) {
-//        database.updateNote(bodyText: textView.text, id: id) { (success) in
-//            if success {
-//                print("NOTES UPDATED")
-//            }
-//        }
-//    }
-//}
+extension ViewController : UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if entry != nil {
+        database.updateNote(bodyText: textView.text, id: id) { (success) in
+            if success {
+                print("NOTES UPDATED")
+            }
+        }
+        }
+    }
+}
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CoreData
 
 class firebaseNetworking {
     
@@ -47,36 +48,5 @@ class firebaseNetworking {
             }
         }
     }
-    
-    public func getNotes(completion: @escaping (Bool, [NoteData]) -> ()) {
-        print("Get notes called")
-        // Variables
-        var note = NoteData()
-        
-        var NoteDataArray = [NoteData]()
-        // Observe company child with .childAdded type
-        database.child("users").child(myUID).observe(DataEventType.childAdded, with:
-            { (snapshot) in
-                print(snapshot)
-                // Initializing Eumerator
-                let enumerator = snapshot.children.allObjects
-                // Adding the data from child snapshots
-                if let t1 = enumerator[0] as? DataSnapshot { note.bodyText = t1.value as? String }
-                if let t2 = enumerator[1] as? DataSnapshot { note.createdAt = t2.value as? String }
-                note.id = snapshot.key
-                
-                NoteDataArray.append(note)  // Appending into companyDataArray
-                completion(true, NoteDataArray)  // Completion handler
-        }) { (error) in // Error Handling
-            debugPrint(error.localizedDescription)
-            completion(false, NoteDataArray)
-        }
-    }
-}
 
-struct NoteData{
-    var bodyText : String!
-    var createdAt : String!
-    var id : String!
 }
-

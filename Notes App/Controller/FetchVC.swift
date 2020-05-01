@@ -13,75 +13,75 @@ import FirebaseDatabase
 class FetchVC: UIViewController {
     
     var moc : NSManagedObjectContext!
+        
+    let database = Database.database().reference()
     
-    let database = firebaseNetworking.shared
+    var counter : Int? = nil
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         print("Fetch view loaded")
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         moc = appDelegate.persistentContainer.viewContext
-        createEntries{ (success) in
-            print("creating entries")
-            if success{
-  
-            } else {
-                print("error in creating entries")
-                
             }
-        }
-        
-
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+            getNotes()
         let storyboard = UIStoryboard(name: "Main", bundle: nil);
           let vc = storyboard.instantiateViewController(withIdentifier: "NotesVC") as! NotesVC
           let navController = UINavigationController(rootViewController: vc)
           navController.modalPresentationStyle = .fullScreen
-          self.present(navController, animated:true, completion: nil)
+        self.present(navController, animated:true, completion: nil)
+
     }
 
+    //TODO .value instead of .child added
     
     //MARK:- New Entry
-    func createEntries(completion: @escaping (Bool) -> ()){
-        
-        print("Creating entries")
-        
-        let entryEntity = NSEntityDescription.entity(forEntityName: "Note", in:  moc)!
-        
-        
-        database.getNotes { (success, data) in
-            print(data.count,"NUMBERRRR")
-            if success {
+        public func getNotes() {
+            print("Get notes called")
+            
+            let entryEntity = NSEntityDescription.entity(forEntityName: "Note", in:  moc)!
+            
+            database.child("users").child(getUID()).observe(.childAdded, with:
+                { (snapshot) in
+                    print(snapshot)
+                    
+                    // Initializing Eumerator
+                    let enumerator = snapshot.children.allObjects
+                    var bodyText = ""
+                    var createdAt = ""
+                    // Adding the data from child snapshots
+                    if let t1 = enumerator[0] as? DataSnapshot { bodyText = (t1.value as? String)!
+                    }
+                    
+                    if let t2 = enumerator[1] as? DataSnapshot { createdAt = (t2.value as? String)! }
+                    
+                    let id = snapshot.key
+                    
+                    print("Creating entries")
 
-                for note in data {
                     let entryObject = NSManagedObject(entity: entryEntity, insertInto: self.moc)
 
-                    let id = note.id
-                    let bodyText = note.bodyText
-                    let date = note.createdAt.dateValue
-                    
                     entryObject.setValue(bodyText, forKey: "bodyText")
-                          
-                    entryObject.setValue(date, forKey: "createdAt")
-                          
+
+                    entryObject.setValue(createdAt.dateValue, forKey: "createdAt")
+
                     entryObject.setValue(id, forKey: "id")
-                    
+
                     //MARK: Save Note in CoreDataBase
                     do{  try self.moc.save() }
                     catch let error as NSError{ print(error.localizedDescription) }
-                }
-                completion(true)
+                    
             }
-            else {
-                completion(false)
+            ) { (error) in // Error Handling
+                debugPrint(error.localizedDescription)
             }
         }
-        }
-    
-}
+    }
+
 extension Date {
     var stringValue : String {
         let formatter = DateFormatter()
